@@ -30,7 +30,7 @@ module changes, update the README block that matches and ship both together.
 
 ## Deployment
 
-Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and publishes
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and publishes
 `dist/`.
 
 **The repository's Pages source must be set to "GitHub Actions"** under Settings → Pages.
