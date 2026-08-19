@@ -1,5 +1,5 @@
 ---
-import { phishguardDisclaimer } from '../data/projects.js';
+import { classifierDisclaimer } from '../data/projects.js';
 
 /** @type {{ metrics: import('../data/projects.js').ProjectMetrics }} */
 const { metrics } = Astro.props;
@@ -38,6 +38,6 @@ const stats = [
   </dl>
 
   <p class="mt-3 text-xs leading-relaxed text-muted">
-    A constant &ldquo;legitimate&rdquo; predictor scores {pct(metrics.baseline)}. {phishguardDisclaimer}
+    A constant &ldquo;legitimate&rdquo; predictor scores {pct(metrics.baseline)}. {classifierDisclaimer}
   </p>
 </div>

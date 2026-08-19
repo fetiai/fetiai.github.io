@@ -101,14 +101,14 @@ export const projects = [
     },
   },
   {
-    slug: 'phishguard',
-    name: 'PhishGuard',
-    tagline: 'Phishing URL classifier — KNN and Naive Bayes, each written twice.',
+    slug: 'phishing-url-classifier',
+    name: 'Phishing URL Classifier',
+    tagline: 'Two algorithms, each written twice — and the baseline that keeps them honest.',
     description:
-      'Trained on the UCI PhiUSIIL dataset: 140,404 URLs, 49 features, 7.5% phishing. ' +
-      'The pipeline runs EDA, missing-value handling, outlier treatment, feature ' +
-      'engineering, scaling and SMOTE. KNN and Gaussian Naive Bayes are each implemented ' +
-      'from scratch and with scikit-learn, so the pair can be compared directly.',
+      'The UCI PhiUSIIL corpus runs 140,404 URLs deep and only 7.5% of it is hostile — ' +
+      'which is exactly why accuracy flatters here and recall does the real work. KNN ' +
+      'and Gaussian Naive Bayes are each built twice across its 49 features, once from ' +
+      'scratch and once from scikit-learn, so every number has a reference to answer to.',
     algorithms: [
       'K-Nearest Neighbors (from scratch)',
       'K-Nearest Neighbors (scikit-learn)',
@@ -129,9 +129,9 @@ export const projects = [
       { name: 'Docker', logo: '/logos/docker.svg' },
     ],
     video: {
-      mp4: '/video/phishguard.mp4',
-      webm: '/video/phishguard.webm',
-      poster: '/video/phishguard.jpg',
+      mp4: '/video/phishing-url-classifier.mp4',
+      webm: '/video/phishing-url-classifier.webm',
+      poster: '/video/phishing-url-classifier.jpg',
       seconds: 20,
     },
     links: {
@@ -153,6 +153,6 @@ export const projects = [
   },
 ];
 
-/** Shown wherever a PhishGuard accuracy appears. */
-export const phishguardDisclaimer =
+/** Shown wherever a classifier accuracy appears. */
+export const classifierDisclaimer =
   'Coursework reimplementation — not a security product. Do not use it to decide whether a link is safe.';
