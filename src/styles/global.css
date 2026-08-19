@@ -75,3 +75,30 @@ body {
   .logo-light { display: none; }
   .logo-dark { display: block; }
 }
+
+/* Outbound-link marker. Sized in em so it tracks the label it follows rather
+   than a fixed pixel size, and sits on the cap height rather than the baseline. */
+.ext-arrow {
+  display: inline-block;
+  width: 0.82em;
+  height: 0.82em;
+  margin-left: 0.15em;
+  vertical-align: -0.06em;
+  opacity: 0.55;
+}
+
+a:hover .ext-arrow,
+a:focus-visible .ext-arrow {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ext-arrow {
+    transition: transform 180ms ease-out, opacity 180ms ease-out;
+  }
+  /* Travels along its own axis, so the cue reads as "this leaves the page". */
+  a:hover .ext-arrow,
+  a:focus-visible .ext-arrow {
+    transform: translate(1.5px, -1.5px);
+  }
+}

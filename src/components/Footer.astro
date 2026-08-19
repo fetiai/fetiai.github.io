@@ -1,5 +1,6 @@
 ---
 import { course } from '../data/team.js';
+import ExternalArrow from './ExternalArrow.astro';
 ---
 <footer class="border-t border-border">
   <div class="mx-auto max-w-[1200px] px-6 py-12 text-center text-sm text-muted">
@@ -13,7 +14,7 @@ import { course } from '../data/team.js';
         rel="noopener noreferrer"
         class="rounded font-medium text-text hover:text-accent"
       >
-        github.com/fetiai <span aria-hidden="true">↗</span>
+        github.com/fetiai <ExternalArrow />
       </a>
     </p>
   </div>

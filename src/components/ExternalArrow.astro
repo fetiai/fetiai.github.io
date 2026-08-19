@@ -1,0 +1,23 @@
+---
+// The outbound marker for every external link. A stroked glyph rather than the
+// "↗" character: that character's weight and baseline come from whatever font
+// happens to resolve it, so it sat heavy and slightly low beside the label.
+// This inherits colour and weight, and scales with the parent's font size.
+//
+// Styles live in global.css, not here: the hover rule keys off the enclosing
+// <a>, which belongs to the parent component, and Astro's scoped styles cannot
+// reach across that boundary.
+---
+<svg
+  viewBox="0 0 12 12"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class="ext-arrow"
+>
+  <path d="M3.6 8.4 8.4 3.6" />
+  <path d="M4.9 3.6H8.4V7.1" />
+</svg>

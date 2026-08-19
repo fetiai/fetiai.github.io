@@ -1,5 +1,6 @@
 ---
 import { acronym, course } from '../data/team.js';
+import ExternalArrow from './ExternalArrow.astro';
 ---
 <section class="relative overflow-hidden">
   <!-- Static, very low contrast. The card videos are the page's motion budget;
@@ -46,7 +47,7 @@ import { acronym, course } from '../data/team.js';
         rel="noopener noreferrer"
         class="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:border-accent"
       >
-        GitHub <span aria-hidden="true">↗</span>
+        GitHub <ExternalArrow />
       </a>
     </div>
   </div>
