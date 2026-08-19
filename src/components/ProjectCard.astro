@@ -1,0 +1,109 @@
+---
+import TagPill from './TagPill.astro';
+import TechItem from './TechItem.astro';
+import MetricStrip from './MetricStrip.astro';
+import FactStrip from './FactStrip.astro';
+
+/** @type {{ project: import('../data/projects.js').Project }} */
+const { project } = Astro.props;
+const { video, links, metrics, facts } = project;
+
+const videoLabel = `Screen recording: ${project.name}`;
+---
+<article
+  class="card group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-1"
+  style="box-shadow: var(--shadow-card);"
+>
+  <!-- The wrapper reserves the box before the video loads, so there is no layout
+       shift. The ratio matches the recordings exactly (1680x1080), so nothing is
+       cropped and object-cover only guards against a mis-encoded asset. -->
+  <div class="relative aspect-[14/9] overflow-hidden bg-neutral-900">
+    <video
+      class="h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster={video.poster}
+      aria-label={videoLabel}
+    >
+      <source src={video.webm} type="video/webm" />
+      <source src={video.mp4} type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="text-[1.5rem] font-semibold tracking-[-0.015em]">{project.name}</h3>
+    <p class="mt-1.5 text-[1rem] text-muted">{project.tagline}</p>
+
+    <p class="mt-4 text-[0.9375rem] leading-[1.65]">{project.description}</p>
+
+    <p class="mt-6 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-muted">
+      Algorithms
+    </p>
+    <ul class="mt-2.5 flex flex-wrap gap-2">
+      {project.algorithms.map((a) => <TagPill label={a} />)}
+    </ul>
+
+    <p class="mt-6 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-muted">
+      Built with
+    </p>
+    <ul class="mt-2.5 flex flex-wrap items-center gap-x-5 gap-y-3">
+      {project.techStack.map((item) => <TechItem item={item} />)}
+    </ul>
+
+    {metrics && <MetricStrip metrics={metrics} />}
+    {facts && <FactStrip facts={facts} />}
+
+    <!-- mt-auto pins the button row to the bottom so both cards line up even
+         though their descriptions and pill counts differ. -->
+    <div class="mt-auto pt-6">
+      <div class="flex flex-wrap items-center gap-2 border-t border-border pt-5">
+        <a
+          href={links.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-contrast"
+        >
+          Live demo <span aria-hidden="true">↗</span>
+        </a>
+
+        {links.repos.map((repo) => (
+          <a
+            href={repo.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-border px-4 py-2 text-sm font-medium hover:border-accent"
+          >
+            {repo.label} <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+
+        <a
+          href={links.report}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Full report — in Indonesian"
+          class="rounded-lg px-3 py-2 text-sm font-medium text-muted underline-offset-4 hover:text-accent hover:underline"
+        >
+          Report (PDF) <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  /* The card is not clickable, so the hover cue stays deliberately slight —
+     a dramatic one would falsely imply the whole surface is a link. */
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      transition: transform 200ms ease-out, border-color 200ms ease-out;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+    }
+  }
+</style>

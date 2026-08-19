@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Light palette. Every token is defined here on bare :root so no colour has its
+   only definition inside a media query. Dark mode follows the OS; there is no
+   toggle, deliberately — it is a one-page site and a toggle is state to persist,
+   a control to place, and a flash of the wrong theme to prevent, for no real gain. */
+:root {
+  --bg: #fbfbfa;
+  --surface-1: #ffffff;
+  --surface-2: #f3f3f1;
+  --text: #17171a;
+  --text-muted: #62626a;
+  --border: #e4e4e1;
+  --accent: #3b5bdb;
+  --accent-contrast: #ffffff;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0c;
+    --surface-1: #131315;
+    --surface-2: #1c1c1f;
+    --text: #f2f2f0;
+    --text-muted: #a1a1a8;
+    --border: #2a2a2e;
+    --accent: #748ffc;
+    --accent-contrast: #0b0b0c;
+    --shadow-card: none;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+html {
+  scroll-padding-top: 5rem; /* keeps anchors clear of the sticky header */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Never remove an outline without replacing it. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Dark-theme logo variants: the near-black brand marks (Three.js, NumPy, pandas)
+   are unreadable on the dark card surface, so each swaps to the vendor's own
+   light-on-dark colour. Light theme keeps the real brand mark. */
+.logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .logo-light { display: none; }
+  .logo-dark { display: block; }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fetiai.github.io/sitemap-index.xml

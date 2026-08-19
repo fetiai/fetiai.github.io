@@ -1,0 +1,53 @@
+---
+import { acronym, course } from '../data/team.js';
+---
+<section class="relative overflow-hidden">
+  <!-- Static, very low contrast. The card videos are the page's motion budget;
+       anything moving up here would compete with them. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10"
+    style="background:
+      radial-gradient(60rem 30rem at 50% -10%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 70%);"
+  ></div>
+
+  <div class="mx-auto flex min-h-[70vh] max-w-[1200px] flex-col justify-center px-6 py-20 text-center">
+    <h1 class="font-bold tracking-[-0.04em]" style="font-size: clamp(3rem, 9vw, 5.5rem); line-height: 1.02;">
+      F.E.T.I.
+    </h1>
+
+    <p class="mt-5 tracking-[0.02em]" style="font-size: clamp(1rem, 2.5vw, 1.25rem);">
+      {acronym.map((part, i) => (
+        <>
+          {i > 0 && <span class="text-muted"> · </span>}
+          <span class="font-semibold text-accent">{part.initial}</span><span>{part.rest}</span>
+        </>
+      ))}
+    </p>
+
+    <p class="mx-auto mt-6 max-w-2xl text-balance" style="font-size: 1.0625rem;">
+      Group {course.group} — two projects in search, optimization, and classification.
+    </p>
+
+    <p class="mt-3 text-sm text-muted">
+      {course.code} {course.name} · {course.institution} · {course.year}
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="#projects"
+        class="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast"
+      >
+        See the projects
+      </a>
+      <a
+        href="https://github.com/fetiai"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:border-accent"
+      >
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

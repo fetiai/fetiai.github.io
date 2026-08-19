@@ -1,0 +1,10 @@
+---
+// Deliberately non-interactive: no link, no hover lift, no filtering.
+// Nothing to click means nothing to mislead.
+const { label } = Astro.props;
+---
+<li
+  class="rounded-full border border-border bg-surface-2 px-3 py-1 text-[0.8125rem] font-medium"
+>
+  {label}
+</li>

@@ -1,0 +1,29 @@
+---
+/** @type {{ item: import('../data/projects.js').TechItem }} */
+const { item } = Astro.props;
+// A stack with no usable official mark falls back to a letter tile. Fiber is the
+// only one in this set; every other logo ships as a local SVG.
+const initials = item.name.replace(/[^A-Za-z]/g, '').slice(0, 2);
+---
+<li class="flex items-center gap-2">
+  {item.logo ? (
+    <>
+      <img
+        src={item.logo}
+        alt=""
+        width="20"
+        height="20"
+        class:list={['h-5 w-5 shrink-0', item.logoDark && 'logo-light']}
+      />
+      {item.logoDark && (
+        <img src={item.logoDark} alt="" width="20" height="20" class="logo-dark h-5 w-5 shrink-0" />
+      )}
+    </>
+  ) : (
+    <span
+      aria-hidden="true"
+      class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-surface-2 text-[0.5625rem] font-bold text-muted ring-1 ring-border"
+    >{initials}</span>
+  )}
+  <span class="text-[0.8125rem] font-medium">{item.name}</span>
+</li>

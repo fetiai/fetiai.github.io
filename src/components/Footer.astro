@@ -1,0 +1,20 @@
+---
+import { course } from '../data/team.js';
+---
+<footer class="border-t border-border">
+  <div class="mx-auto max-w-[1200px] px-6 py-12 text-center text-sm text-muted">
+    <p>
+      {course.code} {course.name} · {course.institution} · {course.year}
+    </p>
+    <p class="mt-2">
+      <a
+        href="https://github.com/fetiai"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded font-medium text-text hover:text-accent"
+      >
+        github.com/fetiai <span aria-hidden="true">↗</span>
+      </a>
+    </p>
+  </div>
+</footer>

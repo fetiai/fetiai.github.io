@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TeamMember from '../components/TeamMember.astro';
+import Footer from '../components/Footer.astro';
+import { projects } from '../data/projects.js';
+import { team } from '../data/team.js';
+
+const title = 'F.E.T.I. — Group 16 · IF3070 Foundations of AI · STEI ITB';
+const description =
+  'Two projects from Group 16: a 5×5×5 magic cube solved by six search algorithms, and a phishing URL classifier built on the UCI PhiUSIIL dataset.';
+---
+
+<Base title={title} description={description}>
+  <Header />
+
+  <main id="main">
+    <Hero />
+
+    <section id="projects" aria-labelledby="projects-heading" class="py-16 lg:py-24">
+      <div class="mx-auto max-w-[1200px] px-6">
+        <h2
+          id="projects-heading"
+          class="font-semibold tracking-[-0.02em]"
+          style="font-size: clamp(1.75rem, 4vw, 2.5rem);"
+        >
+          Projects
+        </h2>
+
+        <div class="mt-10 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+          {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="team" aria-labelledby="team-heading" class="py-16 lg:py-24">
+      <div class="mx-auto max-w-[1200px] px-6">
+        <h2
+          id="team-heading"
+          class="text-center font-semibold tracking-[-0.02em]"
+          style="font-size: clamp(1.75rem, 4vw, 2.5rem);"
+        >
+          Team
+        </h2>
+
+        <!-- items-start so a two-line name does not shift its neighbours' avatars. -->
+        <ul class="mt-12 flex flex-wrap items-start justify-center gap-4 sm:gap-6 lg:gap-12">
+          {team.map((member) => <TeamMember member={member} />)}
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
