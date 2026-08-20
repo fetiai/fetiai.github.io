@@ -8,6 +8,13 @@ export default defineConfig({
   site: 'https://fetiai.github.io',
   base: '/',
   trailingSlash: 'ignore',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The magic cube is a separate repository published to the /magic-cube
+      // subpath of this same host, so nothing here generates a route for it and
+      // it would go unlisted.
+      customPages: ['https://fetiai.github.io/magic-cube/'],
+    }),
+  ],
   vite: { plugins: [tailwindcss()] },
 });
